@@ -2,91 +2,78 @@
 <head>
   <title>くじ引き</title>
   <style>
-    #overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 100;
-    }
-    #popup {
-        display: none;
+            /* 既存のスタイル */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+        #popup {
+            font-size: 5vw;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw; 
+            height: 55vw;/* 上からの距離 */
+            border: 0.5vw solid #ccc;
+            background-color: #fff;
+            box-shadow: 0px 0px 1vw rgba(0, 0, 0, 0.2);
+            z-index: 101;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+
+        }
 
 
-        transform: translate(-50%, -50%);
-        width: 50vw; /* 固定幅 */
-        height: 50vw; /* 固定高さ */
-        padding: 1vw;
-        border: 0.5vw solid #ccc;
-        background-color: #fff;
-        box-shadow: 0px 0px 1vw rgba(0, 0, 0, 0.2);
-        z-index: 101;
-        display: flex;
+        #close-btn {
+            position: absolute;
+            top: 10px; /* 上からの距離 */
+            right: 10px; /* 右からの距離 */
+            font-size: 7vw; /* バツボタンのサイズ */
+            cursor: pointer;
+        }
 
-    }
-    #popup-message {
-        text-align: center; /* テキストを中央揃え */
-        margin-bottom: 2vw; /* ボタンとの間隔 */
-    }
-    #popup button {
-        margin-top: 2vw; /* メッセージとボタンの間隔 */
-        width: auto; /* 幅は自動 */
-        padding: 1vw;
-        font-size: 3vw; /* ボタンのフォントサイズを設定 */
-        border: none;
-        background-color: #007bff;
-        color: white;
-        cursor: pointer;
-        border-radius: 0.5vw;
-        transition: background-color 0.3s ease;
-    }
-    #popup button:hover {
-        background-color: #0056b3;
-    }
-    #popup-close {
-        position: absolute;
-        top: 1vw;
-        right: 1vw;
-        font-size: 3vw;
-        cursor: pointer;
-        background: none;
-        border: none;
-        color: #333;
-        transition: color 0.3s ease;
-    }
-    #popup-close:hover {
-        color: #007bff;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
-    .button-container {
-        display: flex;
-        justify-content: space-between; /* ボタンを横に均等に並べる */
-        padding: 1vw; /* コンテナ内の余白 */
-        box-sizing: border-box; /* パディングを幅に含める */
-    }
-    .img-button {
-        width: 30vw; /* ビューポート幅の30% */
-        height: 30vw; /* 高さは自動調整 */
-        border: none;
-        border-radius: 2vw;
-        cursor: pointer;
-        transition: opacity 0.3s ease;
-    }
-    .img-button:hover {
-        opacity: 0.8;
-    }
-    a {
-        display: block;
-        text-decoration: none;
-    }
+
+        #popup-message {
+            position: fixed;
+            left: 50%;
+            top: 40%;
+            transform: translateX(-50%) translateY(-50%);
+            text-align: center;
+            font-size: 4.5vw;
+        }
+        #popup button {
+            position: fixed;
+            top: 75%;
+            left: 25%;
+            width: 50%;
+            height: 20%;
+            font-size: 3.5vw;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .fade {
+            opacity: 1;
+            transition: opacity 2.0s ease;
+        }
+        .fade.hidden {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
