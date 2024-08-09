@@ -75,7 +75,14 @@
             align-items: center;
             justify-content: center;
         }
-
+#loading-message {
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold;
+}
+.hidden {
+    display: none;
+}
         
         body {
             font-family: Arial, sans-serif;
@@ -152,7 +159,9 @@ text-align: left;
     </div>
 
   <!-- ローディング表示のためのオーバーレイ -->
-    <div id="loading-overlay">Loading..</div>
+    <div id="loading-overlay" class="hidden">
+    <div id="loading-message">Loading...</div>
+</div>
 
 
     
@@ -285,7 +294,7 @@ text-align: left;
 
    function initializeLiff0003() {
 
-       showLoading();
+      
 
        
       liff.init({ liffId: '1657196041-0B5JEMmG' })
@@ -304,6 +313,9 @@ text-align: left;
 
     async function sendIdTokenToGAS_00A3() {
       try {
+          
+showLoading(); // ローディング表示
+          
         const idToken = await liff.getIDToken();
           
 　　const adjustedAnswers = answers.map(answer => answer + 1);
@@ -328,7 +340,7 @@ text-align: left;
         const data = await response.json();
         if (data.status === 'success') {
             
-         hideLoading();
+     
             
           showPopup(data.message);
 
@@ -336,9 +348,6 @@ text-align: left;
             
         } else {
           showPopup('エラー: ' + data.message);
-
-         hideLoading();
-                
 
             
         }
@@ -364,7 +373,16 @@ text-align: left;
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('popup').style.display = 'none';
 
+function showLoading() {
+    document.getElementById('loading-overlay').style.display = 'flex';
+}
 
+function hideLoading() {
+    document.getElementById('loading-overlay').style.display = 'none';
+}
+
+
+            
 setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる          
  window.location.href = 'index.html';
 
