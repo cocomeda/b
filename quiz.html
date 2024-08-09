@@ -32,10 +32,28 @@
             align-items: center;
             flex-direction: column;
             justify-content: center;
+        }
 
+      #popup-waiting {
+         font-size: 5vw;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw; 
+            height: 55vw;/* 上からの距離 */
+            border: 0.5vw solid #ccc;
+            background-color: #fff;
+            box-shadow: 0px 0px 1vw rgba(0, 0, 0, 0.2);
+            z-index: 101;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
         }
 
 
+        
         #close-btn {
             position: absolute;
             top: 10px; /* 上からの距離 */
@@ -123,7 +141,12 @@ text-align: left;
 
 </head>
 <body>
+    
+   <div id="popup-waiting">
+        <p>少々お待ちください...</p>
+    </div>
 
+    
     <div id="overlay" onclick="closePopup()"></div>
     <div id="popup">
         <span id="close-btn" onclick="closePopup()">×</span>
@@ -260,6 +283,9 @@ text-align: left;
 
     async function sendIdTokenToGAS_00A3() {
       try {
+
+showWaitingPopup(); // 待機中メッセージを表示
+          
         const idToken = await liff.getIDToken();
 
 　　const adjustedAnswers = answers.map(answer => answer + 1);
@@ -302,9 +328,6 @@ text-align: left;
     }
 
 
-
-
-
         function showPopup(message) {
             document.getElementById('popup-message').innerText = message;
             document.getElementById('overlay').style.display = 'block';
@@ -315,6 +338,18 @@ text-align: left;
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('popup').style.display = 'none';
 
+
+
+        function showWaitingPopup() {
+            document.getElementById('popup-waiting').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeWaitingPopup() {
+            document.getElementById('popup-waiting').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+            
 
 setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる          
  window.location.href = 'index.html';
