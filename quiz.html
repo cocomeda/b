@@ -285,8 +285,7 @@ text-align: left;
         if (data.status === 'success') {
           showPopup(data.message);
 
-setTimeout(closePopup, 3000); // 3秒後にポップアップを閉じる          
- window.location.href = 'https://example.com/quiz';
+
             
         } else {
           showPopup('エラー: ' + data.message);
@@ -315,6 +314,12 @@ setTimeout(closePopup, 3000); // 3秒後にポップアップを閉じる
         function closePopup() {
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('popup').style.display = 'none';
+
+
+setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる          
+ window.location.href = 'index.html';
+
+            
         }
 
         loadQuiz(); // 最初のクイズをロード
