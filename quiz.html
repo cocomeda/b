@@ -284,6 +284,10 @@ text-align: left;
 
 
    function initializeLiff0003() {
+
+       showLoading();
+
+       
       liff.init({ liffId: '1657196041-0B5JEMmG' })
         .then(() => {
           if (liff.isLoggedIn()) {
@@ -301,7 +305,7 @@ text-align: left;
     async function sendIdTokenToGAS_00A3() {
       try {
         const idToken = await liff.getIDToken();
-
+          
 　　const adjustedAnswers = answers.map(answer => answer + 1);
           
         const response = await fetch('https://script.google.com/macros/s/AKfycbySNNEnQt9_g_GcbdsK5Uw1aTpVsEau9ttbuXwfZCh8CeDB0lN_Npsp_W9kj8q5x8XjeA/exec', {
@@ -323,6 +327,9 @@ text-align: left;
 
         const data = await response.json();
         if (data.status === 'success') {
+            
+         hideLoading();
+            
           showPopup(data.message);
 
 
@@ -330,7 +337,7 @@ text-align: left;
         } else {
           showPopup('エラー: ' + data.message);
 
-
+         hideLoading();
                 
 
             
