@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -32,6 +34,7 @@
             align-items: center;
             flex-direction: column;
             justify-content: center;
+
         }
 
       #popup-waiting {
@@ -54,6 +57,7 @@
 
 
         
+
         #close-btn {
             position: absolute;
             top: 10px; /* 上からの距離 */
@@ -141,12 +145,7 @@ text-align: left;
 
 </head>
 <body>
-    
-   <div id="popup-waiting">
-        <p>少々お待ちください...</p>
-    </div>
 
-    
     <div id="overlay" onclick="closePopup()"></div>
     <div id="popup">
         <span id="close-btn" onclick="closePopup()">×</span>
@@ -283,9 +282,6 @@ text-align: left;
 
     async function sendIdTokenToGAS_00A3() {
       try {
-
-showWaitingPopup(); // 待機中メッセージを表示
-          
         const idToken = await liff.getIDToken();
 
 　　const adjustedAnswers = answers.map(answer => answer + 1);
@@ -309,19 +305,15 @@ showWaitingPopup(); // 待機中メッセージを表示
 
         const data = await response.json();
         if (data.status === 'success') {
-closeWaitingPopup()
-            
           showPopup(data.message);
 
 
             
         } else {
-
-            
-closeWaitingPopup()
-                
           showPopup('エラー: ' + data.message);
 
+
+                
 
             
         }
@@ -330,6 +322,9 @@ closeWaitingPopup()
         alert('通信エラーが発生しました。');
       }
     }
+
+
+
 
 
         function showPopup(message) {
@@ -342,9 +337,12 @@ closeWaitingPopup()
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('popup').style.display = 'none';
 
+
 setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる          
  window.location.href = 'index.html';
-}
+
+            
+        }
 
         function showWaitingPopup() {
             document.getElementById('popup-waiting').style.display = 'block';
@@ -355,13 +353,18 @@ setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる
             document.getElementById('popup-waiting').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
         }
-            
 
 
-            
         
 
         loadQuiz(); // 最初のクイズをロード
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
