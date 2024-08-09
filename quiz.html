@@ -309,15 +309,19 @@ showWaitingPopup(); // 待機中メッセージを表示
 
         const data = await response.json();
         if (data.status === 'success') {
+closeWaitingPopup()
+            
           showPopup(data.message);
 
 
             
         } else {
+
+            
+closeWaitingPopup()
+                
           showPopup('エラー: ' + data.message);
 
-
-                
 
             
         }
@@ -338,7 +342,7 @@ showWaitingPopup(); // 待機中メッセージを表示
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('popup').style.display = 'none';
 
-
+}
 
         function showWaitingPopup() {
             document.getElementById('popup-waiting').style.display = 'block';
@@ -355,7 +359,7 @@ setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる
  window.location.href = 'index.html';
 
             
-        }
+        
 
         loadQuiz(); // 最初のクイズをロード
     </script>
