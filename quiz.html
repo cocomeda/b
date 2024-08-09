@@ -223,14 +223,71 @@
                 const shuffledOptions = [...quiz.options];
                 shuffleArray(shuffledOptions);
 
-                // シャッフルされた画像と元の解答番号の
+                // シャッフルされた画像と元の解答番号のマッピングを作成
+                const correctOptionIndex = shuffledOptions.indexOf(quiz.options[quiz.correct]);
 
+                optionsElems.forEach((imgElem, index) => {
+                    imgElem.src = shuffledOptions[index];
+                    imgElem.parentElement.dataset.index = index;
+                    imgElem.parentElement.classList.remove('selected'); // 選択状態をリセット
+                });
 
+                questionElem.classList.remove('hidden');
+                optionsElem.classList.remove('hidden');
+            }, 300);
+        }
 
+        function showPopup(message, redirectUrl) {
+            document.getElementById('popup-message').innerText = message;
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'flex';
 
+            // 指定されたURLにリダイレクト（必要な場合のみ）
+            if (redirectUrl) {
+                setTimeout(() => {
+                    window.location.href = redirectUrl;
+                }, 5000);
+            }
+        }
 
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
 
+        function selectOption(event) {
+            const selectedOption = event.currentTarget;
+            if (selectedOption.classList.contains('selected')) return;
 
+            selectedOption.classList.add('selected');
+
+            const selectedOptionIndex = Number(selectedOption.dataset.index);
+            const quiz = quizzes[currentQuiz];
+            if (selectedOptionIndex === quiz.correct) {
+                answers.push(true);
+                showPopup('正解!', 'https://example.com/next'); // 次のクイズページへのURL
+            } else {
+                answers.push(false);
+                showPopup('不正解!', 'https://example.com/next'); // 次のクイズページへのURL
+            }
+
+            currentQuiz++;
+            if (currentQuiz < quizzes.length) {
+                loadQuiz();
+            } else {
+                showPopup('クイズ終了! 結果を確認してください。', 'https://example.com/results'); // 結果ページへのURL
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadQuiz();
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+        });
+    </script>
+</body>
+</html>
 
 
 
