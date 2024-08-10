@@ -376,6 +376,11 @@ showLoading(); // ローディング表示
         function closePopup() {
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('popup').style.display = 'none';
+            
+setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる          
+ window.location.href = 'index.html';
+            
+        }
 
 function showLoading() {
     document.getElementById('loading-overlay').style.display = 'flex';
@@ -386,13 +391,7 @@ function hideLoading() {
 }
 
 
-            
-setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる          
- window.location.href = 'index.html';
-
-            
-        }
-
+        
         loadQuiz(); // 最初のクイズをロード
     </script>
 </body>
