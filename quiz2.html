@@ -134,6 +134,14 @@
 </head>
 <body>
 
+    
+    <div id="overlay" onclick="closePopup()"></div>
+    <div id="popup">
+        <span id="close-btn" onclick="closePopup()">×</span>
+        <div id="popup-message"></div>
+    </div>
+
+    
     <!-- ローディング表示のためのオーバーレイ -->
     <div id="loading-overlay">
         <div id="loading-message">読み込み中…</div>
@@ -226,7 +234,9 @@
    async function sendIdTokenToGAS_00A3() {
       try {
           
-showLoading(); // ローディング表示
+
+          //showLoading(); // ローディング表示
+     document.getElementById('loading-overlay').style.display = 'block'; // Show loading screen   
           
         const idToken = await liff.getIDToken();
           
