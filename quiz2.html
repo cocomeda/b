@@ -233,8 +233,10 @@
         
 async function sendIdTokenToGAS_00A3() {
     try {
-        showLoading(); // ローディング表示
-
+        //showLoading();  ローディング表示
+        
+document.getElementById('overlay').style.display = 'block';
+        
         const idToken = await liff.getIDToken();
         
         const adjustedAnswers = answers.map(answer => answer + 1);
