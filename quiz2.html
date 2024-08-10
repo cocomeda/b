@@ -216,7 +216,9 @@
 
 
    function initializeLiff0003() {
-   
+document.getElementById('overlay').style.display = 'block';
+
+       
       liff.init({ liffId: '1657196041-0B5JEMmG' })
         .then(() => {
           if (liff.isLoggedIn()) {
@@ -234,8 +236,6 @@
 async function sendIdTokenToGAS_00A3() {
     try {
         //showLoading();  ローディング表示
-        
-document.getElementById('overlay').style.display = 'block';
         
         const idToken = await liff.getIDToken();
         
@@ -260,8 +260,14 @@ document.getElementById('overlay').style.display = 'block';
 
         const data = await response.json();
         if (data.status === 'success') {
+
+               document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
+            
             showPopup(data.message);
         } else {
+            
+             document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
+            
             showPopup('エラー: ' + data.message);
         }
     } catch (error) {
