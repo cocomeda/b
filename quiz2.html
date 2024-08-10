@@ -254,9 +254,10 @@ async function sendIdTokenToGAS_00A3() {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: new URLSearchParams({
+            
+　　　      body: JSON.stringify({
                 'idToken': idToken,
-                'answers': JSON.stringify(adjustedAnswers) // JSON形式で送信
+                'answers': adjustedAnswers // JSON形式で送信    
             })
         });
 
