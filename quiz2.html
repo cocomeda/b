@@ -173,11 +173,28 @@
                     option.onclick = () => answerQuestion(index);
                 });
             } else {
-                sendIdTokenToGAS_00A3(); // 最後の問題が答えられたら自動で送信
+                initializeLiff0003(); // 最後の問題が答えられたら自動で送信
             }
         }
 
 
+
+
+   function initializeLiff0003() {
+   
+      liff.init({ liffId: '1657196041-0B5JEMmG' })
+        .then(() => {
+          if (liff.isLoggedIn()) {
+            sendIdTokenToGAS_00A3(); // IDトークンをGASに送信する関数を呼び出す
+          } else {
+            liff.login(); // ログインしていない場合はログインページにリダイレクト
+          }
+        })
+        .catch(error => {
+          console.error('LIFFの初期化エラー:', error);
+          alert('LIFFの初期化に失敗しました。');
+        });
+    }
         
    async function sendIdTokenToGAS_00A3() {
       try {
@@ -217,7 +234,7 @@ showLoading(); // ローディング表示
         }
       } catch (error) {
         console.error('通信エラー:', error);
-        alert('通信エラーが発生しました。');
+        alert('通信エラーが発生しました');
       } finally {
                 hideLoading(); // ローディング表示を非表示
             }
