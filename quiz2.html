@@ -228,7 +228,7 @@
 
 
    function initializeLiff0003() {
- document.getElementById('overlay').style.display = 'block';
+ document.getElementById('loading-overlay').style.display = 'block';
 
        
       liff.init({ liffId: '1657196041-0B5JEMmG' })
@@ -274,7 +274,7 @@ async function sendIdTokenToGAS_00A3() {
         const data = await response.json();
         if (data.status === 'success') {
 
-               document.getElementById('overlay').style.display = 'none'; // Hide loading screen
+               document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
             
             showPopup(data.message);
         } else {
