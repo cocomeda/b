@@ -274,7 +274,7 @@ async function sendIdTokenToGAS_00A3() {
         const data = await response.json();
         if (data.status === 'success') {
 
-               document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
+               document.getElementById('overlay').style.display = 'none'; // Hide loading screen
             
             showPopup(data.message);
         } else {
