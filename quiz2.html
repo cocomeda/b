@@ -140,13 +140,21 @@
         <span id="close-btn" onclick="closePopup()">×</span>
         <div id="popup-message"></div>
     </div>
-
-    
+   
     <!-- ローディング表示のためのオーバーレイ -->
     <div id="loading-overlay">
         <div id="loading-message">読み込み中…</div>
     </div>
 
+
+
+
+
+
+
+
+
+    
     <div class="quiz-container">
         <div class="quiz-question" id="question">質問がここに表示されます</div>
         <ul class="quiz-options">
@@ -216,7 +224,7 @@
 
 
    function initializeLiff0003() {
-document.getElementById('overlay').style.display = 'block';
+ document.getElementById('loading-overlay').style.display = 'block';
 
        
       liff.init({ liffId: '1657196041-0B5JEMmG' })
