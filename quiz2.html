@@ -230,7 +230,7 @@
 
 
 
-        function answerQuestion1(index) {
+        function answerQuestion(index) {
             answers[currentQuiz] = index;
             currentQuiz++;
             showCurrentQuiz(); // 次の問題を表示
@@ -256,30 +256,6 @@
             }
         }
 
-
-        function answerQuestion(index) {
-          //  if (disabled[currentQuiz]) return; // If already disabled, return
-            
-            answers[currentQuiz] = index;
-         //   disabled[currentQuiz] = true; // Disable options
-            
-            // ボタンが押された後に0.5秒待ってから画面を切り替える
-            setTimeout(() => {
-                currentQuiz++;
-                if (currentQuiz < quizzes.length) {
-                    showCurrentQuiz();
-                } else {
-    
-
-                    alert(answers)
-                    initializeLiff0003(); // 最後の問題が答えられたら自動で送信
-
-                    
-                    
-                    
-                }
-            }, 500); // ボタンを押してから画面切り替えまでの遅延
-        }
 
 
 
