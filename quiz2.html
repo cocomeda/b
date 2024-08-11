@@ -279,52 +279,50 @@
 
 
         
-  function sendIdTokenToGAS_00A3() {
-   
-          
-alert(answers)
-          
-showLoading(); // ローディング表示
-          
-        const idToken = liff.getIDToken();
-          
-　　const adjustedAnswers = answers.map(answer => answer + 1);
-          
-        const response = fetch('https://script.google.com/macros/s/AKfycbz7BMegeqIttYwLn1Wi9wmkgXYQw0Jq94oYOhxQvfifhW512DPKhY68PhXqRDwxhk-lgw/exec', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
- 　　　　　　　body: JSON.stringify({
+ function sendIdTokenToGAS_00A3() {
+    alert(answers);
+
+    showLoading(); // ローディング表示
+
+    liff.getIDToken().then(idToken => {
+        const adjustedAnswers = answers.map(answer => answer + 1);
+
+        fetch('https://script.google.com/macros/s/AKfycbz7BMegeqIttYwLn1Wi9wmkgXYQw0Jq94oYOhxQvfifhW512DPKhY68PhXqRDwxhk-lgw/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: JSON.stringify({
                 'idToken': idToken,
                 'answers': adjustedAnswers // JSON形式で送信
             })
+        }).then(response => {
+            if (!response.ok) {
+                console.error('HTTPエラー:', response.status);
+                alert('HTTPエラーが発生しました。ステータスコード: ' + response.status);
+                return;
+            }
+
+            return response.json(); // レスポンスを JSON に変換
+        }).then(data => {
+            if (data.status === 'success') {
+                hideLoading(); // ローディング表示を非表示
+                showPopup(data.message);
+            } else {
+                hideLoading(); // ローディング表示を非表示
+                showPopup('エラー: ' + data.message);
+            }
+        }).catch(error => {
+            console.error('通信エラー:', error);
+            alert('通信エラーが発生しました。');
+            hideLoading(); // ローディング表示を非表示
         });
-
-        if (!response.ok) {
-          console.error('HTTPエラー:', response.status);
-          alert('HTTPエラーが発生しました。ステータスコード: ' + response.status);
-          return;
-        }
-
-        const data = response.json();
-        if (data.status === 'success') {
-            
-   //document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
-           hideLoading(); // ローディング表示を非表示  
-          showPopup(data.message);
-
-
-            
-        } else {
-            
-   //document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
-             hideLoading(); // ローディング表示を非表示
-          showPopup('エラー: ' + data.message);
-
-            
-        }
-      } 
+    }).catch(error => {
+        console.error('IDトークン取得エラー:', error);
+        alert('IDトークンの取得エラーが発生しました。');
+        hideLoading(); // ローディング表示を非表示
+    });
+}
 
 
 
