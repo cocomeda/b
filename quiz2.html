@@ -251,7 +251,7 @@
             } else {
 
 
-                alert(answers)
+                
                 initializeLiff0003(); // 最後の問題が答えられたら自動で送信
             }
         }
@@ -319,7 +319,9 @@
         
     async function sendIdTokenToGAS_00A3() {
       try {
-
+          
+alert(answers)
+          
 showLoading(); // ローディング表示
           
         const idToken = await liff.getIDToken();
