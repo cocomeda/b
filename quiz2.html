@@ -308,15 +308,12 @@ showLoading(); // ローディング表示
         const data = await response.json();
         if (data.status === 'success') {
             
-     document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
-            
           showPopup(data.message);
 
 
             
         } else {
             
-document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
             
           showPopup('エラー: ' + data.message);
 
