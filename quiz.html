@@ -281,6 +281,8 @@ text-align: left;
                 } else {
                     const answersText = answers.map((answer, index) => `Q${index + 1}: ${answer + 1}`).join('\n');
                     //showPopup(`回答結果:\n${answersText}`);
+
+                    alert(answers)
                     initializeLiff0003(); // 最後の問題が答えられたら自動で送信
 
                     
