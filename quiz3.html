@@ -170,20 +170,12 @@ text-align: left;
 
     
     <div class="quiz-container">
-        <div class="quiz-question fade" id="question">質問がここに表示されます</div>
-        <ul class="quiz-options fade">
-            <li class="quiz-option" data-index="0">
-                <img src="option1.jpg" alt="選択肢1">
-            </li>
-            <li class="quiz-option" data-index="1">
-                <img src="option2.jpg" alt="選択肢2">
-            </li>
-            <li class="quiz-option" data-index="2">
-                <img src="option3.jpg" alt="選択肢3">
-            </li>
-            <li class="quiz-option" data-index="3">
-                <img src="option4.jpg" alt="選択肢4">
-            </li>
+        <div class="quiz-question" id="question">質問がここに表示されます</div>
+        <ul class="quiz-options">
+            <li class="quiz-option" onclick="answerQuestion(0)">選択肢1</li>
+            <li class="quiz-option" onclick="answerQuestion(1)">選択肢2</li>
+            <li class="quiz-option" onclick="answerQuestion(2)">選択肢3</li>
+            <li class="quiz-option" onclick="answerQuestion(3)">選択肢4</li>
         </ul>
     </div>
 
