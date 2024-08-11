@@ -247,6 +247,9 @@ text-align: left;
         }
 
         function loadQuiz2(quizzes) {
+
+              document.getElementById('loading-overlay').style.display = 'none'; 
+            
             const questionElem = document.getElementById('question');
             const optionsElem = document.querySelector('.quiz-options');
             
