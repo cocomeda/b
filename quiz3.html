@@ -246,36 +246,37 @@ text-align: left;
             }
         }
 
-        function loadQuiz2(quizzes) {
-            hideLoading(); // ローディング非表示
+       
+function loadQuiz2(quizzes) {
+    hideLoading(); // ローディング非表示
 
-            const questionElem = document.getElementById('question');
-            const optionsElem = document.querySelector('.quiz-options');
-            questionElem.classList.add('hidden');
-            optionsElem.classList.add('hidden');
+    const questionElem = document.getElementById('question');
+    const optionsElems = document.querySelectorAll('.quiz-option');
+    
+    questionElem.classList.add('hidden');
+    optionsElems.forEach(elem => elem.classList.add('hidden'));
 
-            setTimeout(() => {
-                const quiz = quizzes[currentQuiz];
-                questionElem.innerText = quiz.question;
-                const optionsElems = document.querySelectorAll('.quiz-option');
+    setTimeout(() => {
+        const quiz = quizzes[currentQuiz];
+        questionElem.innerText = quiz.question;
+        
+        // シャッフルされたオプションのリストを作成
+        const shuffledOptions = [...quiz.options];
+        shuffleArray(shuffledOptions);
 
-                // シャッフルされたオプションのリストを作成
-                const shuffledOptions = [...quiz.options];
-                shuffleArray(shuffledOptions);
+        // シャッフルされた選択肢と元の解答番号のマップを作成
+        const optionIndexMap = shuffledOptions.map(opt => quiz.options.indexOf(opt));
 
-                // シャッフルされた選択肢と元の解答番号のマップを作成
-                const optionIndexMap = shuffledOptions.map(opt => quiz.options.indexOf(opt));
+        optionsElems.forEach((optionElem, index) => {
+            optionElem.innerText = shuffledOptions[index];
+            optionElem.onclick = () => answerQuestion(optionIndexMap[index]);
+            optionElem.classList.remove('disabled'); // Enable all options
+            optionElem.classList.remove('hidden'); // Show options
+        });
 
-                optionsElems.forEach((optionElem, index) => {
-                    optionElem.innerText = shuffledOptions[index];
-                    optionElem.onclick = () => answerQuestion(optionIndexMap[index]);
-                    optionElem.classList.remove('disabled'); // Enable all options
-                });
-
-                questionElem.classList.remove('hidden');
-                optionsElem.classList.remove('hidden');
-            }, 500); // トランジションの時間に合わせて変更
-        }
+        questionElem.classList.remove('hidden');
+    }, 500); // トランジションの時間に合わせて変更
+}
 
 
 
