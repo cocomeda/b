@@ -320,7 +320,8 @@ document.getElementById('loading-overlay2').style.display = 'none'; // Hide load
         console.error('通信エラー:', error);
         alert('通信エラーが発生しました。');
       } finally {
-                hideLoading(); // ローディング表示を非表示
+                //hideLoading(); // ローディング表示を非表示
+          document.getElementById('loading-overlay2').style.display = 'none';
             }
     }
 
