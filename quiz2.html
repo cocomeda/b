@@ -259,10 +259,9 @@
 
 
 
-   function initializeLiff0003() {
+function initializeLiff0003() {
 
-      
-
+ document.getElementById('loading-overlay').style.display = 'block'; // Hide loading screen
        
       liff.init({ liffId: '1657196041-0B5JEMmG' })
         .then(() => {
@@ -278,7 +277,9 @@
         });
     }
 
-    async function sendIdTokenToGAS_00A3() {
+
+        
+  async function sendIdTokenToGAS_00A3() {
       try {
           
 showLoading(); // ローディング表示
@@ -307,15 +308,17 @@ showLoading(); // ローディング表示
         const data = await response.json();
         if (data.status === 'success') {
             
-     
-            hideLoading()
+     document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
+            
           showPopup(data.message);
 
 
             
         } else {
-          hideLoading()
-            showPopup('エラー: ' + data.message);
+            
+document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
+            
+          showPopup('エラー: ' + data.message);
 
             
         }
@@ -354,22 +357,18 @@ function hideLoading() {
     document.getElementById('loading-overlay').style.display = 'none';
 }
 
+function showLoading2() {
+    document.getElementById('loading-overlay2').style.display = 'flex';
+}
+
+function hideLoading2() {
+    document.getElementById('loading-overlay2').style.display = 'none';
+}
+
+        
 
         
         loadQuiz(); // 最初のクイズをロード
-
-
-
-
-
-
-
-
-
-
-
-        
-
 
 
 
