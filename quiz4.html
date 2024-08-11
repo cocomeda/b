@@ -262,6 +262,9 @@
 function initializeLiff0003() {
 
     
+showLoading(); // ローディング表示
+
+    
       liff.init({ liffId: '1657196041-0B5JEMmG' })
         .then(() => {
           if (liff.isLoggedIn()) {
@@ -281,7 +284,6 @@ function initializeLiff0003() {
   async function sendIdTokenToGAS_00A3() {
       try {
           
-showLoading(); // ローディング表示
           
         const idToken = await liff.getIDToken();
           
