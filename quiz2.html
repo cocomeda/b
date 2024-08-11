@@ -203,7 +203,7 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                document.getElementById('loading-overlay').style.display = 'block'; // Show loading screen
+                document.getElementById('loading-overlay2').style.display = 'block'; // Show loading screen
                 await loadQuiz();
             } catch (error) {
                 console.error('Error in start_aaa:', error);
@@ -238,7 +238,7 @@
 
 
         function showCurrentQuiz() {
-            document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
+            document.getElementById('loading-overlay2').style.display = 'none'; // Hide loading screen
 
             if (currentQuiz < quizzes.length) {
                 const quiz = quizzes[currentQuiz];
@@ -346,7 +346,7 @@ showLoading(); // ローディング表示
         const data = await response.json();
         if (data.status === 'success') {
             
-   
+   document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
             
           showPopup(data.message);
 
@@ -354,7 +354,7 @@ showLoading(); // ローディング表示
             
         } else {
             
-document.getElementById('loading-overlay2').style.display = 'none'; // Hide loading screen
+document.getElementById('loading-overlay').style.display = 'none'; // Hide loading screen
             
           showPopup('エラー: ' + data.message);
 
@@ -365,7 +365,7 @@ document.getElementById('loading-overlay2').style.display = 'none'; // Hide load
         alert('通信エラーが発生しました。');
       } finally {
                 //hideLoading(); // ローディング表示を非表示
-          document.getElementById('loading-overlay2').style.display = 'none';
+          document.getElementById('loading-overlay').style.display = 'none';
             }
     }
 
