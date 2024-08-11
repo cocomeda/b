@@ -249,6 +249,9 @@
                     option.onclick = () => answerQuestion(index);
                 });
             } else {
+
+
+                alert(answers)
                 initializeLiff0003(); // 最後の問題が答えられたら自動で送信
             }
         }
@@ -277,12 +280,6 @@
 
     async function sendIdTokenToGAS_00A3() {
       try {
-
-          
-           setTimeout(() => {
-       showLoading2();
-    }, 2000); // 2000ミリ秒 (2秒) 後にリダイレクト
-     
         
         const idToken = await liff.getIDToken();
           
