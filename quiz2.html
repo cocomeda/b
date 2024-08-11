@@ -210,6 +210,8 @@
             }
         });
 
+
+        
         async function loadQuiz() {
             try {
                 const response = await fetch('https://script.google.com/macros/s/AKfycbwP1OkJYftnAmAKDbA-R65xBNiiDgHOIHh5_l5HNskh-WVOVLsnDa3ZSTN5ZdZsayCU/exec'); // GASのウェブアプリのURLに置き換えてください
@@ -275,9 +277,13 @@
 
     async function sendIdTokenToGAS_00A3() {
       try {
+
           
-     document.getElementById('loading-overlay2').style.display = 'block'; // 
-          
+           setTimeout(() => {
+       showLoading2();
+    }, 2000); // 2000ミリ秒 (2秒) 後にリダイレクト
+     
+        
         const idToken = await liff.getIDToken();
           
 　　const adjustedAnswers = answers.map(answer => answer + 1);
@@ -352,6 +358,15 @@ function hideLoading() {
     document.getElementById('loading-overlay').style.display = 'none';
 }
 
+function showLoading2() {
+    document.getElementById('loading-overlay2').style.display = 'flex';
+}
+
+function hideLoading2() {
+    document.getElementById('loading-overlay2').style.display = 'none';
+}
+
+        
 
         
         loadQuiz(); // 最初のクイズをロード
