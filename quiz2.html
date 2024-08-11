@@ -308,13 +308,14 @@ showLoading(); // ローディング表示
         if (data.status === 'success') {
             
      
-            
+            hideLoading()
           showPopup(data.message);
 
 
             
         } else {
-          showPopup('エラー: ' + data.message);
+          hideLoading()
+            showPopup('エラー: ' + data.message);
 
             
         }
