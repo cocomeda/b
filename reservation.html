@@ -161,6 +161,45 @@ font-size: 4vw;
 margin-bottom: 0vw;
 margin-left: 1vw;
 }
+
+
+input[type="date"] {
+  position: relative;
+  padding: 0 10px;
+  width: 50vw;
+  height: 15vw;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #999;
+}
+
+
+
+input[type="date"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+input[type="date"]::-webkit-clear-button{
+  -webkit-appearance: none;
+}
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 0;
+  width: 50vw;
+  height: 15vw;
+ background: rgba(180, 150, 100, 0.3);
+  color: transparent;
+  cursor: pointer;
+}
+
+
+	
 	
 </style>
 </head>
