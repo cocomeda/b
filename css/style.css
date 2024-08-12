@@ -1,5 +1,4 @@
 
-
 @charset "utf-8";
 
 
@@ -107,6 +106,62 @@ footer .pr {display: block;font-size: 80%;}
 
 
 
+h5{ 
+ color: black;
+ text-align: center;
+
+margin: 60px auto 30px auto;
+}
+
+
+
+
+
+
+h1{ 
+ color: black;
+ text-align: center;
+font-size: 5vw;
+margin-bottom: 0.3vw;
+margin-top: 1vw;
+}
+
+h1.top{ 
+ color: black;
+ text-align: center;
+font-size: 10vw;
+margin-bottom: 3vw;
+margin-top: 1vw;
+}
+
+h1.cp{ 
+ color: black;
+ text-align: center;
+font-size: 4vw;
+margin-bottom: 1vw;
+margin-top: 1vw;
+margin-left: 1vw;
+}
+
+h1.goukei{ 
+font-weight: bold;
+ color: black;
+ text-align: center;
+font-size: 8vw;
+margin-bottom: 0.3vw;
+margin-top: 2vw;
+}
+
+h1.t{ 
+ color: black;
+ text-align: center;
+font-size: 1vw;
+margin-bottom: 1vw;
+margin-top: 1vw;
+}
+
+
+
 
 
 .button {
@@ -130,7 +185,40 @@ footer .pr {display: block;font-size: 80%;}
 
 
 
+input[type="date"] {
+  position: relative;
+  padding: 0 10px;
+  width: 50vw;
+  height: 15vw;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #999;
+}
 
+
+
+input[type="date"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+input[type="date"]::-webkit-clear-button{
+  -webkit-appearance: none;
+}
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 0;
+  width: 50vw;
+  height: 15vw;
+ background: rgba(180, 150, 100, 0.3);
+  color: transparent;
+  cursor: pointer;
+}
 
 
 
@@ -155,3 +243,6 @@ font-size: 5vw;
   left: 5px;
   font-weight: bold;
 }
+
+
+
