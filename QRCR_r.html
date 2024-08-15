@@ -94,13 +94,23 @@ function sendQRDataToGAS1(qr_data) {
 
     // QRコードデータとIDトークンをGASに送信
     $.ajax({
-        url: 'https://script.google.com/macros/s/AKfycbx0pD6JIWDHdZpFBryqsHojohwJMudgcTq5nuISSn6PuxGiDP-ov9eRbHZPHNQXO8ko/exec',    
+        url: 'https://script.google.com/macros/s/AKfycbwN745Ty8CdRMiNZTn5cuy2cPYo5o00syD_S82ryxr-aHLm0BS64WO6Jx87GcLKCI0i/exec',    
         type: 'POST',
         data: { idToken: idToken, qr_data: qr_data },
         success: function (response) {
-            // 成功時の処理
-            console.log(response);
-            showModal(response); // ポップアップで表示
+            try {
+                // レスポンスを JSON としてパース
+                var parsedResponse = JSON.parse(response);
+
+                // レスポンスオブジェクトからメッセージを抽出
+                var message = parsedResponse.message;
+
+                // ポップアップで表示
+                showModal(message);
+            } catch (error) {
+                console.error('Response parsing error:', error);
+                showModal('An error occurred while parsing the response.');
+            }
         },
         error: function (error) {
             // エラー時の処理
