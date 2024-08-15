@@ -248,7 +248,7 @@
         
         async function loadQuiz() {
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwP1OkJYftnAmAKDbA-R65xBNiiDgHOIHh5_l5HNskh-WVOVLsnDa3ZSTN5ZdZsayCU/exec'); // GASのウェブアプリのURLに置き換えてください
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxDS0P6WUg96_0EUKNm7QRaB34Iwyd7keVdR4Cjy0lPaK8zh4ODm8tkYl_zTaqxB-UKkg/exec'); // GASのウェブアプリのURLに置き換えてください
                 quizzes = await response.json();
 
                 if (!Array.isArray(quizzes) || quizzes.length === 0) {
