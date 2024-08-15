@@ -38,7 +38,7 @@
 <div id="overlay"></div>
 <div id="popup">
     <p id="popup-message"></p>
-    <button onclick="closePopup()">Close</button>
+    <button onclick="closePopup()"></button>
 </div>
 <div id="loading-overlay">Loading...</div>
 <div id="loading-overlay2">Loading...</div>
@@ -78,7 +78,7 @@
     async function sendQRDataToGAS1(qr_data) {
         try {
             const idToken = liff.getIDToken();
-            const response = await fetch('https://script.google.com/macros/s/AKfycbwiOfYNWkNEmndnvGStXoF4cghVPgV0IB-PMblqr6-V8FaW3mlpolKrtN_nRWKr7iET/exec', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbyUridaBm3rUfJzOsU69OQFAbQFoQz59Xb7RK8_iqtKEOukZymE_04TJvFjCrkYeVto/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -97,7 +97,7 @@
                     alert('Failed to send QR data to GAS. Status: ' + response.status);
                 }
             } else {
-                alert('Failed to send QR data to GAS. Status: ' + response.status);
+                alert('Failed to send QR data to GAS. Status : ' + response.status);
             }
         } catch (error) {
             console.error('Error:', error);
