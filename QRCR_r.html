@@ -100,13 +100,14 @@ function sendQRDataToGAS1(qr_data) {
         success: function (response) {
             try {
                 // レスポンスを JSON としてパース
-                var parsedResponse = JSON.parse(response);
+                //var parsedResponse = JSON.parse(response);
 
                 // レスポンスオブジェクトからメッセージを抽出
-                var message = parsedResponse.message;
+              //  var message = parsedResponse.message;
 
                 // ポップアップで表示
-                showModal(message);
+                //showModal(message);
+                showModal("aaaa");
             } catch (error) {
                 console.error('Response parsing error:', error);
                 showModal('An error occurred while parsing the response.6');
