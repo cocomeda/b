@@ -97,13 +97,7 @@
         <div id="loading-message">読み込み中…</div>
     </div>
     
-<!-- モーダルのHTML -->
-<div id="resultModal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="resultMessage"></p>
-    </div>
-</div>
+
 
 <script>
 // LIFFの初期化
@@ -143,6 +137,9 @@ function openQRCodeReader1() {
 
 // QRコードデータをGoogle Apps Scriptに送信する関数
 function sendQRDataToGAS1(qr_data) {
+
+    showLoading(); // ローディング表示
+    
     const idToken = liff.getIDToken();
 
     // QRコードデータとIDトークンをGASに送信
@@ -154,7 +151,7 @@ function sendQRDataToGAS1(qr_data) {
             try {
                 // レスポンスオブジェクトからメッセージを抽出
                var message = response.message;
-
+                hideLoading();
                 // ポップアップで表示
                 showPopup(message)
                 //showModal(message);
@@ -212,7 +209,13 @@ setTimeout(closePopup, 2000); // 3秒後にポップアップを閉じる
         }
 
 
+function showLoading() {
+    document.getElementById('loading-overlay').style.display = 'flex';
+}
 
+function hideLoading() {
+    document.getElementById('loading-overlay').style.display = 'none';
+}
 
 
 
